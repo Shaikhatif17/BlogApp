@@ -4,6 +4,8 @@ import './App.css'
 import { useDispatch } from 'react-redux'
 import {login , logout} from "./Store/authSlice"
 import authService from  './appWrite/auth'
+import {Header ,Footer} from "./Components/index"
+
 
 
 function App() {
