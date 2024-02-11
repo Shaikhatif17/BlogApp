@@ -12,7 +12,8 @@ const logOutHandler = ()=>{
 }
   return (
     <button 
-    className='incline-block px-6 py-2 duration-200 hover:bg-blue-100 rounded-full'>LogOut</button>
+    className='incline-block px-6 py-2 duration-200 hover:bg-blue-100 rounded-full'
+    >LogOut</button>
   )
 }
 
