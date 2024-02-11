@@ -5,6 +5,9 @@ import Logo from "../logo/Logo"
 import LogoutBtn from "./header/LogoutBtn"
 import Button from "./Button"
 import Input from "./Input"
+import PostCard from "./PostCard"
+
+PostCard
 export{
     Header,
     Footer,
@@ -12,7 +15,8 @@ export{
     Logo,
     LogoutBtn,
     Button,
-    Input
+    Input,
+    PostCard,
    
 
     
