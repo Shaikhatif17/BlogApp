@@ -6,6 +6,7 @@ import LogoutBtn from "./header/LogoutBtn"
 import Button from "./Button"
 import Input from "./Input"
 import PostCard from "./PostCard"
+import RTE from "./RTE"
 
 PostCard
 export{
@@ -17,6 +18,7 @@ export{
     Button,
     Input,
     PostCard,
+    RTE
    
 
     
