@@ -1,9 +1,9 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import {useForm} from 'react-hook-form';
 import {Button, Input ,Select ,RTE} from "../index"
 import service from '../../appWrite/config';
 import { useNavigate } from 'react-router-dom';
-import { UseSelector, useSelector } from 'react-redux';}
+import {  useSelector } from 'react-redux';}
 
 function PostForm({post }) {
     const navigate = useNavigate();
@@ -56,12 +56,37 @@ function PostForm({post }) {
             return '';
         }
     },[])
+    useEffect(()=>{
+     const subscription = watch((value ,{name})=>{
+      if(name =="title"){
+        setValue("slug", slugTransform(value.title), {shouldValidate:true})
+      }
+     });
+     return (()=>{ 
+      subscription.unsubscribe()
+     })
+    },[slugTransform,watch,setValue])
+     
      
   return (
-    <div>
-      
+   <form onSubmit={handleSubmit(submit)} className='flex flex-wrap'>
+    <div className='w-2/3 px-2'>
+      <input 
+      label = "Title" 
+      placeholder='title'
+      className='mb-4'
+      {...register("title" ,{required:true })}/>
+      <input label="slug"
+      placeholder='slug'
+      className='mb-4' 
+      {...register("slug", {required:true})}
+      onInput={((e)=>{slugTransform(e.currentTarget.value) ,{shouldValidate :true}})}/>
+
+      <RTE label="content :" name="content " control={control} defaultValue= {getValues("content")} />
     </div>
+
+   </form>
   )
 }
 
-export default PostForm
+export default PostForm;
