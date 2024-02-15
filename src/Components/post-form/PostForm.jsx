@@ -84,6 +84,31 @@ function PostForm({post }) {
 
       <RTE label="content :" name="content " control={control} defaultValue= {getValues("content")} />
     </div>
+    <div className='w-1/3 px-2'>
+      <input label= "Featured Image"
+      type='file' 
+      className='mb-4'
+      accept='image/png ,image/jpg ,image/jpeg image/igf'
+      {...register("image" ,{required :true})}/>
+      
+      {post && (
+        <div className='w-full mb-4'>
+          <img 
+          src={service.getFilePreview(post.featuredImage)}
+          alt={post.title}
+          className='rounded-lg'/>
+        </div>
+      )}
+
+      <select options ={["active" ,"passive"]} 
+      label ="status" 
+      className='mb-4'
+      {...register('status' ,{required:true})}>
+        <Button type='submit' bgColor={post ? "bg-green-500" :undefined} className='w-full'>
+          {post ? "update" : "submit"}
+        </Button>
+      </select>
+    </div>
 
    </form>
   )
