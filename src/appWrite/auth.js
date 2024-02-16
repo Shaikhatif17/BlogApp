@@ -1,4 +1,4 @@
-import conf from "../Conf/conf";
+import conf from "../Conf/conf.js";
 import { Client, Account, ID } from "appwrite";
 
 
@@ -15,24 +15,23 @@ export class AuthService {
     }
 
     async createAccount({email, password, name}) {
-        try {
-            const userAccount = await this.account.create(ID.unique(), email, password, name);
-            if (userAccount) {
-                // call another method
-                return this.login({email, password});
-            } else {
-               return  userAccount;
-            }
-        } catch (error) {
-            throw error;
+       try{
+        const userAcount =await this.account.create(ID.unique(),email,password,name)
+        if(userAcount){
+            return this.login({email ,password});
+        }else{
+            return userAcount
         }
+       }catch(error){
+        console.log("Appwrite serive :: createAcount :: error", error);
+       }
     }
 
     async login({email, password}) {
         try {
             return await this.account.createEmailSession(email, password);
         } catch (error) {
-            throw error;
+            console.log("Appwrite serive :: login :: error", error);
         }
     }
 

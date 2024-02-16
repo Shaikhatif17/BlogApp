@@ -15,13 +15,18 @@ function EditPost () {
           setPost(post)
         }
       })
+    }else{
+      navigate("/")
     }
-  },[])
-  return (
-    <div>
-      
+  },[slug ,navigate])
+
+  return post ? (
+    <div className='py-8'>
+      <Container>
+        <PostForm post={post}/>
+      </Container>
     </div>
-  )
-}
+  ) :null
+  } 
 
 export default EditPost 

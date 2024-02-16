@@ -1,6 +1,7 @@
 import React from 'react';
 import authService from '../../appWrite/auth';
-import { logout } from '../../Store/authSlice';import { useDispatch } from 'react-redux';
+import { logout } from '../../Store/authSlice';
+import { useDispatch } from 'react-redux';
 
 
 function LogoutBtn() {
@@ -12,7 +13,7 @@ const logOutHandler = ()=>{
 }
   return (
     <button 
-    className='incline-block px-6 py-2 duration-200 hover:bg-blue-100 rounded-full'
+    className='incline-block px-6 py-2 duration-200 hover:bg-blue-100 rounded-full' onClick={logOutHandler}
     >LogOut</button>
   )
 }
